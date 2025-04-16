@@ -1,0 +1,274 @@
+/* || RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  img{
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* UTILITY CLASS */
+  .nowrap{
+    white-space: nowrap;
+  }
+  html{
+    scroll-behavior: smooth;
+  }
+  /* || GENERAL STYLES */
+  body {
+    font: 1.5rem "Nunito", sans-serif;
+    min-height: 100vh;
+    background-color: #475569;
+    background-image:radial-gradient(whitesmoke, #475569);
+    display: flex;
+    flex-direction: column;
+  }
+  /* header,nav,main,footer{
+      display: grid;
+      place-content: center;
+      grid-template-columns: 100%;
+      text-align: center;
+  } */
+   /* :where( header,footer,.card) */  /* where doesn't have that much specifity
+   as is */
+ :is( header,footer) {/* see importance of specifity at 6:40:00 */
+      position: sticky;
+      background-color: #1E293B;
+      color: whitesmoke;
+      text-align: center;
+      z-index: 1;
+  }
+  header{
+      top: 0;
+      /* color: red; */
+  }
+  nav{
+      background-color: #fff;
+      
+      padding: 0.5rem;
+      border-bottom: 2px solid #000;
+      font-weight: bolder;
+      display: flex;
+      justify-content: space-evenly;
+  
+  }
+  /* Syntax: */ 
+  /* @media media type and (condition:breakpoint){
+      //CSS rules
+  } */
+   /* @media screen and(min-width:481px){
+  
+  
+      
+   }
+  @media (min-aspect-ratio:16/9) {
+      /* //css rules */
+    
+ nav a:any-link
+  {
+    color: #000;
+ }
+ /* nav a:hover
+ nav a:focus{
+    color: hsl(0, 0%, 20%,0.6);
+ } */
+  nav :is(a:hover, a:focus){
+    color: hsl(0, 0%, 20%,0.6);/* same as above lines */
+  }
+ nav a:active{
+  color: red;
+ }
+  main{
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 1rem;
+  }
+  footer{
+      bottom: 0;
+  }
+
+
+
+  /* profile card */
+  .card{
+     scroll-margin-top: 8rem;
+width: min(100%,350px);
+background-color: #cbd5e1;
+border: 2px solid#000;
+border-radius: 15px;
+padding: 1rem;
+display: flex;
+flex-direction: column;
+align-items: center;
+
+}
+.card:target{
+  border: 3px solid rebeccapurple;
+}
+.card figure{  
+    display: flex;
+    flex-flow: column nowrap;
+}
+.card img{
+    border: 5px double #333;
+    border-radius: 50%;
+}
+.card img:not([alt]){
+  border: 8px solid red;
+}
+
+/* .card:nth-child(2){ *//* it will do on the basis of html not what we arrange in css */
+  /* background-color: papayawhip;
+} */
+
+
+.card figcaption{
+    font-weight: bolder;
+    font-size: 2rem;
+    margin: 1 rem;
+    text-align: center;
+    
+}
+.card figcaption::before{
+  content:"✨" ;
+  display: block;
+
+}
+.card figcaption::first-line{
+  font-size:3rem ;
+}
+.card p{
+  position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+}
+.card p::before{
+  content: open-quote;
+  font-size: 3em;
+  position: absolute;
+  top: -0.25rem;
+  left: -0.5em;
+}
+.card p::after{
+  content: close-quote;
+  font-size: 3em;
+  position: absolute;
+  top: -0.25rem;
+  right: -0.5em;
+}
+
+  /* SMALL */
+
+  @media screen and (min-width:576px) {
+    /*   body{
+          background-color:blue;
+          background-image: radial-gradient(whitesmoke,blue);
+      } */
+      /* nav{display: none; */
+      main{
+    justify-content: center;
+    flex-flow: row wrap;
+    padding: 1rem;
+      }
+      .card{
+        width: min(100%,400px);
+      }
+      .card:last-child{
+        order: -1;
+      }
+    }
+      
+  
+  /* MEDIUM */
+  @media screen and (min-width:768px) {
+     /*  body{
+          background-color:gold;
+          background-image: radial-gradient(whitesmoke,gold);
+      } */
+      /* nav{display: none; */
+    nav{
+        display: none;
+    }
+    .card{
+        width:min(100% , 325px);
+    }
+    .card figure{
+        flex-flow: column-reverse;
+    }
+    .card figcaption{
+        margin:0.1em 0;
+    }
+    .card p{
+        margin-top:1rem;
+    }
+    }
+      
+  
+  
+  /* LARGE */
+  @media screen and (min-width:992px) {
+    /*   body{
+          background-color:firebrick;
+          background-image: radial-gradient(whitesmoke,firebrick);
+      } */
+      /* nav{display: none; */
+      .card{
+        width:min(100%,400px)
+      }
+      .card :nth-child(2){
+        order: -1;
+      }
+    
+    }
+      
+  
+  /* XL */
+  @media screen and (min-width:1200px) {
+     /*  body{
+          background-color:rebeccapurple;
+          background-image: radial-gradient(whitesmoke,rebeccapurple);
+      } */
+      /* nav{display: none; */
+    .card{
+        width: min(calc(33% - 1rem),500px);
+    }
+    
+    }
+      
+  
+  /* Mobile device landscape */
+  @media screen and (max-height:425px) and (min-aspect-ratio:7/4) {
+      /* body{
+          background-color:dodgerblue;
+          background-image: radial-gradient(whitesmoke,dodgerblue);
+      }
+      h1,h2{
+          font-size: 1.5rem;
+      } */
+      /* nav{display: none; */
+    h1{font-size: 1.5rem;}
+    nav{
+        display: none;
+    }
+    main{
+        flex-flow: nowrap;
+        justify-content: space-evenly;
+        align-items: stretch;
+    }
+    .card{
+        width:min(calc(33%-0.25rem),200px)
+    }
+    .card figcaption,
+    .card p{
+        font-size: 1.25rem;
+    }
+    }
+      
+  
+  
